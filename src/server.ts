@@ -1,11 +1,14 @@
 import "reflect-metadata";
-import express, { response } from 'express';
+import express from 'express';
+import bodyParser from 'body-parser'
+
+import './database'
+import { routes } from "routes";
 
 const app = express();
 
-app.get('/', (request, response) => {
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(routes)
 
-  return response.json({message: 'Olá!!'})
-})
-
-app.listen(3333 ,() => console.log('server rodando'))
+app.listen(3000 ,() => console.log('server rodando!!!ß'))
