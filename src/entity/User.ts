@@ -1,18 +1,28 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm"
+import { Carteira } from "./Carteira"
 
-@Entity()
+@Entity("user")
 export class User {
 
     @PrimaryGeneratedColumn()
-    id: number
+    id: string
 
     @Column()
-    firstName: string
+    user_name: string
 
     @Column()
-    lastName: string
+    cpf_cnpj: string
 
     @Column()
-    age: number
+    created_at: Date
+
+    @Column()
+    updated_at: Date
+
+    @Column()
+    deleted_at: Date
+    @OneToOne(() => Carteira, carteira => carteira.user_id)
+    @JoinColumn({name: "user_id"})
+    carteira: Carteira
 
 }

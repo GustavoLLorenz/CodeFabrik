@@ -44,12 +44,20 @@ export class transacao1679599468195 implements MigrationInterface {
                 type: "timestamp",
                 default: "now()"
               }
+            ],
+            foreignKeys: [
+              {
+                name: "fk_carteira_id",
+                columnNames: ["carteira_id"],
+                referencedTableName: "carteira",
+                referencedColumnNames: ["id"]
+              }
             ]
           })
         );
       }
     
       public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("user");
+        await queryRunner.dropTable("transacao");
       }
     }
