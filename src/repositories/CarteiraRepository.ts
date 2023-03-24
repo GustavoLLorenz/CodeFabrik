@@ -11,8 +11,7 @@ export default class CarteiraRepository {
   }
 
   public async createWallet(userInfo:ICarteira) {
-    console.log('cheguei no wallet repo', userInfo)
-    
+  
     const wallet = this.ormRepository.create(userInfo);
 
     await this.ormRepository.save(wallet);
