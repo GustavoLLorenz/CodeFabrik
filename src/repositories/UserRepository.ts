@@ -1,7 +1,7 @@
 import { User } from "entity/User";
 import IUser from "interfaces/IUser";
 import { getRepository, Repository } from "typeorm";
-import CarteiraRepository from "./CarteiraRepository";
+import CarteiraRepository from "./WalletRepository";
 
 export class UserRepository {
   private ormRepository: Repository<User>;

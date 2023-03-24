@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm"
 import { Carteira } from "./Carteira"
 
 @Entity("transacao")
@@ -14,7 +14,7 @@ export class Transacao {
     tipo: string
 
     @Column()
-    valor_trasacao: string
+    valor_transacao: string
 
     @Column()
     created_at: Date
@@ -26,7 +26,7 @@ export class Transacao {
     deleted_at: Date
 
     @ManyToOne(() => Carteira, carteira => carteira.id)
-
+     @JoinColumn({name: "carteira_id" })
     carteira: Carteira
 
 }
