@@ -19,6 +19,11 @@ export class tableUser1679577013454 implements MigrationInterface {
             type: "varchar"
           },
           {
+          name: "password",
+          type: "varchar"
+          },
+  
+          {
             name: "cpf_cnpj",
             type: "varchar"
           },

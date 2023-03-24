@@ -9,6 +9,9 @@ export class User {
 
     @Column({nullable: false})
     user_name: string
+    
+    @Column({nullable: false})
+    password: string
 
     @Column({nullable: false})
     cpf_cnpj: string

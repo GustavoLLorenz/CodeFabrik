@@ -32,11 +32,12 @@ export class UserController {
   }
 
   async findByCpf(req: Request, res: Response) {
-    const {cpf_cnpj } = req.body
+    const {cpf_cnpj , password} = req.body
 
     if (!cpf_cnpj) {
       return res.status(401).json({message: "CPF/CNPJ não foi informado."})
     }
+
     const service = new UserService()
 
     const user = await service.findByCpf(cpf_cnpj);
