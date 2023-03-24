@@ -1,7 +1,7 @@
 CodeFabrik
 Repositorio feito para codefabrik
 
-Bem vindo ao banco digital FabrolBank!
+Bem vindo ao banco digital FabriBank!
 
 Esse o backend desse projeto foi desenvolvido com nodeJS, typeorm e typescript.O Front será desenvolvido usando ReactJs.
 
