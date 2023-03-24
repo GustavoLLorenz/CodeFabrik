@@ -1,6 +1,8 @@
+import { Carteira } from "entity/Carteira";
 import { User } from "entity/User";
 import IUser from "interfaces/IUser";
 import { getRepository, Repository } from "typeorm";
+import WalletRepository from "./WalletRepository";
 import CarteiraRepository from "./WalletRepository";
 
 export class UserRepository {
@@ -60,12 +62,29 @@ public async create(newUser: IUser): Promise<User | Error> {
     if (!users) {
       return new Error( 'usuario não encontrado')
     }
+
+    const userWallet = await new WalletRepository()
     users.deleted_at = new Date()
 
     await this.ormRepository.save(users)
+    await userWallet.deleteWallet(users.id)
 
     return users;
 
   }
+
+  // public async updateSaldo(id:string, valor:string):Promise<Carteira | Error> {
+  //   const user = await this.ormRepository.findOne({
+  //     where: {
+  //       id,
+  //       deleted_at: null
+  //     }
+  //   })
+
+  //   if (!user) {
+  //     return new Error( 'usuario não encontrado')
+  //   }
+  //   user.
+  // }
 
 }

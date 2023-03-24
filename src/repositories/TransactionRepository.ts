@@ -10,9 +10,8 @@ export default class TransactionRepository {
     this.ormRepository = getRepository(Transacao);
   }
   public async createTransaction(transactionInfo: ITransacao): Promise<Transacao> {
-    console.log('na transaction', transactionInfo)
+    
     const transaction = this.ormRepository.create(transactionInfo);
-      console.log('transaction: --->',transaction)
     await this.ormRepository.save(transaction);
     
     return transaction;

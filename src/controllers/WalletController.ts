@@ -17,6 +17,10 @@ export class WalletController {
 
     const service = new WalletService();
     const wallets = await service.createTransaction(id, tipo, valor_transacao);
+
+    if(wallets instanceof Error) {
+      return res.status(400).json(wallets.message)
+    }
     return res.status(200).json(wallets)
   }
 

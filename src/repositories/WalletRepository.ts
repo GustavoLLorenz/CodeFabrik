@@ -1,7 +1,7 @@
 import { Carteira } from "entity/Carteira";
 import { Transacao } from "entity/Transacao";
 import ICarteira from "interfaces/ICarteira";
-import { getRepository, Repository } from "typeorm";
+import { getRepository, Repository, Timestamp } from "typeorm";
 import TransactionRepository from "./TransactionRepository";
 
 
@@ -34,7 +34,8 @@ export default class WalletRepository {
   public async createTransaction(id: string, tipo: string, valor_transacao: string): Promise <Transacao | Error > {
     const wallet = await this.ormRepository.findOne({
       where: {
-        id: id
+        id: id,
+        deleted_at: null,
       }
     })
     if(!wallet) {
@@ -49,9 +50,36 @@ export default class WalletRepository {
       tipo,
       valor_transacao
     })
+
+    if (transacao.tipo === 'entrada') {
+      wallet.saldo = (Number(wallet.saldo) + Number(transacao.valor_transacao)).toString()
+     // Number(wallet.saldo) += Number(transacao.valor_transacao)
+    } else if (transacao.tipo === 'saida' && Number(wallet.saldo) >= Number(transacao.valor_transacao)) {
+      wallet.saldo = (Number(wallet.saldo) - Number(transacao.valor_transacao)).toString()
+    } else {
+      console.log('entrei no erro')
+      return new Error('tipo de transação inválida ou saldo insuficiente!')
+    }
+
+    await this.ormRepository.save(wallet);
     
     return transacao;
 
+  }
+
+  public async deleteWallet(id: string):Promise<Carteira | Error> {
+    const wallet = await this.ormRepository.findOne({
+      where: {
+        user_id: id
+      }
+    })
+    if (!wallet) {
+      return new Error('Carteira não encontrada.')
+    }
+    wallet.deleted_at = new Date();
+
+    await this.ormRepository.save(wallet);
+    return wallet;
   }
 
 }
