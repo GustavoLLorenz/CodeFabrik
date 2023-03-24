@@ -32,12 +32,12 @@ export class transacao1679599468195 implements MigrationInterface {
               {
                 name: "updated_at",
                 type: "timestamp",
-                default: null
+                isNullable: true
               },
               {
                 name: "deleted_at",
                 type: "timestamp",
-                default: null
+                isNullable: true
               },
               {
                 name: "created_at",

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm"
 import { Carteira } from "./Carteira"
 
 @Entity("user")
@@ -19,8 +19,8 @@ export class User {
     @Column()
     updated_at: Date
 
-    // @Column()
-    // deleted_at: Date
+    @Column()
+    deleted_at: Date
 
     @OneToOne(() => Carteira, carteira => carteira.user_id)
     // @JoinColumn({name: "user_id"})

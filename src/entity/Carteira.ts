@@ -17,10 +17,10 @@ export class Carteira {
     @Column()
     created_at: Date
 
-    @Column()
+    @Column({nullable: true})
     updated_at: Date
 
-    @Column()
+    @Column({nullable: true})
     deleted_at: Date
 
     @OneToOne(() => User, user => user.id)

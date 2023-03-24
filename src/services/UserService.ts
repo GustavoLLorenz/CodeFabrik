@@ -10,6 +10,7 @@ export class UserService {
     const repository = new UserRepository()
 
     const user = await repository.create(newUser)
+ 
 
     return user
 
