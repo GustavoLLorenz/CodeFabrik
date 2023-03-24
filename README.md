@@ -7,7 +7,7 @@ Esse o backend desse projeto foi desenvolvido com nodeJS, typeorm e typescript.O
 
 A nossa API (monolito por questão de tempo), conta com tres tabelas, user , carteira e transações e estão estruturadas da seguinte forma:
 
-Table user: id | user_name | cnpj | created_at | updated_at | deleted_at
+Table user: id | user_name | password | cnpj | created_at | updated_at | deleted_at
 
 aonde id é a PK da tabela, e uma FK para tabela carteira.
 
@@ -23,7 +23,7 @@ aonde id é a PK da tabela, e carteira_id é a FK da tabela carteira
 
 Funcionalidades Atualmente a nossa API conta com as seguintes funções e suas respectivas rotas:
 
-1.cria um usuário http://localhost:3000/user POST com o corpo da requisição {"user_name": "fulano de tal", "cpf_cnpj": "123.456.789-123"}
+1.cria um usuário http://localhost:3000/user POST com o corpo da requisição {"user_name": "fulano de tal", "cpf_cnpj": "123.456.789-123", password: "nominimoseiscaracteres"}
 
 2.acha todos usuários http://localhost:3000/user GET
 
