@@ -1,5 +1,5 @@
 import { User } from "entity/User";
-import {hash} from 'bcrypt'
+import {hash, compare} from 'bcrypt'
 import IUser from "interfaces/IUser";
 import { UserRepository } from "repositories/UserRepository";
 
@@ -24,6 +24,23 @@ export class UserService {
 
   }
 
+  public async userLogin(cpf_cnpj: string, password: string): Promise <User | Error> {
+    const user = await this.repository.findByCpf(cpf_cnpj)
+    
+    if (!user) {
+      return new Error( 'usuario não encontrado')
+    }
+    if (user) {
+      const checkPassword = await compare(password, user.password)
+      if(!checkPassword) return new Error('Senha incorreta')
+    }
+    
+   
+
+    return user
+
+  }
+
   public async findAllUsers(): Promise <User[]> {
    
     const users =  await this.repository.findAllUser()
@@ -34,10 +51,13 @@ export class UserService {
 
   public async findByCpf(cpf: string): Promise <User | Error> {
    
-    const users =  await this.repository.findByCpf(cpf)
+    const user =  await this.repository.findByCpf(cpf)
+    if (!user) {
+      return new Error( 'usuario não encontrado')
+    }
   
 
-    return users;
+    return user;
   }
 
   public async deleteByCpf(cpf: string): Promise <User | Error> {

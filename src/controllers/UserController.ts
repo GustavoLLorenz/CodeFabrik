@@ -65,4 +65,18 @@ export class UserController {
 
     return res.status(200).json(user);
   }
+
+  async userLogin(req: Request, res: Response) {
+    const { cpf_cnpj, password } = req.body;
+    const service = new UserService();
+
+    const user = await service.userLogin(cpf_cnpj, password)
+
+    if (user instanceof Error) {
+      return res.status(400).json(user.message)
+    }
+
+    return res.status(200).json(user)
+  }
+  
 }

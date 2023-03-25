@@ -47,9 +47,9 @@ public async create(newUser: IUser): Promise<User | Error> {
       deleted_at: null
     }});
 
-    if (!users) {
-      return new Error( 'usuario não encontrado')
-    }
+    // if (!users) {
+    //   return new Error( 'usuario não encontrado')
+    // }
     return users;
 
   }
@@ -73,18 +73,5 @@ public async create(newUser: IUser): Promise<User | Error> {
 
   }
 
-  // public async updateSaldo(id:string, valor:string):Promise<Carteira | Error> {
-  //   const user = await this.ormRepository.findOne({
-  //     where: {
-  //       id,
-  //       deleted_at: null
-  //     }
-  //   })
-
-  //   if (!user) {
-  //     return new Error( 'usuario não encontrado')
-  //   }
-  //   user.
-  // }
 
 }

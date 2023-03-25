@@ -15,5 +15,7 @@ userRoutes.get("/user/findByCpf", new UserController().findByCpf);
 
 userRoutes.patch("/user/deleteByCpf", new UserController().deleteByCpf);
 
+userRoutes.post("/user/login", new UserController().userLogin)
+
 export { userRoutes }
 
