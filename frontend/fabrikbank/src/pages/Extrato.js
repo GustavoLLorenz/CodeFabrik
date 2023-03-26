@@ -11,6 +11,7 @@ import {
   TableContainer,
 } from '@mui/material'
 import { Link } from "react-router-dom";
+import '../css/Transfer.css'
 
 function Extrato(props){
   const {user} = props
@@ -43,7 +44,13 @@ function Extrato(props){
       <TableHead className="listhead">
       {TABLE_HEADER.map((item) => {
         return (
-            <TableCell className="headCell"  >{item}</TableCell>
+            <TableCell style={{
+              marginLeft: '5%',
+              fontSize: '1.7rem',
+              color: '#e69b00',
+              borderBottom:'none'
+
+            }}>{item}</TableCell>
         )
           
       })}
@@ -51,9 +58,15 @@ function Extrato(props){
       {extrato.length > 0?  extrato.map((item, index) => {
        return (
         <TableRow key={index} className="listrow">
-          <TableCell className="bodycell" style={item.tipo === 'entrada' ? {color: "#16FF00"} : {color: "red"}}>{item.tipo}</TableCell>
-          <TableCell className="bodycell"> {item.tipo === 'saida'? `- R$ ${item.valor_transacao}`: `R$ ${item.valor_transacao}`}</TableCell>
-          <TableCell className="bodycell">{item.created_at.slice(0,10)}</TableCell>
+          <TableCell className="bodycell" style={item.tipo === 'entrada' ? {color: "#16FF00", borderBottom: 'none', fontSize: '1.4rem'} : {color: "red", borderBottom: 'none', fontSize: '1.4rem'}}>{item.tipo}</TableCell>
+          <TableCell className="bodycell" style={{
+            borderBottom: 'none',
+            fontSize: '1.4rem'
+          }}>  {item.tipo === 'saida'? `- R$ ${item.valor_transacao}`: `R$ ${item.valor_transacao}`}</TableCell>
+          <TableCell className="bodycell" style={{
+            borderBottom: 'none',
+            fontSize: '1.4rem'
+          }}>{item.created_at.slice(0,10)}</TableCell>
         </TableRow>
        )
       }): <p className="tranfertext">nenhuma transacao encontrada =/</p>}

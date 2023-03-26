@@ -31,10 +31,20 @@ Funcionalidades Atualmente a nossa API conta com as seguintes funções e suas r
 
 4.deleta por cpf/cnpj http://localhost:3000/user/deleteByCpf PATCH com o corpo da requisição { "cpf_cnpj": "123.456.789-123"}
 
-5.acha todas carteiras http://localhost:3000/wallet GET 6.cria uma transacao http://localhost:3000/wallet/createTransaction/:id POST onde o :id é o id da carteira e o corpo da requisição {"tipo": "entrada" | "tipo": "saida" , "valor_transacao": "55"}
+5.acha todas carteiras http://localhost:3000/wallet GET
 
-para rodar o projeto , na raiz utilize o comando docker-compose -d (para criar um banco postgres)
+ 6.cria uma transacao http://localhost:3000/wallet/createTransaction/:id POST onde o :id é o id da carteira e o corpo da requisição {"tipo": "entrada" | "tipo": "saida" , "valor_transacao": "55"}
+
+7.ache todas as transacoes por carteira id  http://localhost:3000/transactions/:id GET
+
+8.cria uma transacao  http://localhost:3000/wallet/createTransaction/:carteirta_id POST
+
+para criar  o banco , na raiz utilize o comando docker-compose -d (para criar um banco postgres), e no corpo da requisicao {"tipo": "entrada", "valor_transacao": "55"}
 
 e o arquivo .env é TYPEORM_CONNECTION = postgres TYPEORM_HOST = localhost TYPEORM_USERNAME = root TYPEORM_PASSWORD = admin TYPEORM_DATABASE = fabrik TYPEORM_PORT = 5432 TYPEORM_MIGRATIONS = src/database/migrations/.ts TYPEORM_MIGRATIONS_DIR = src/database/migrations TYPEORM_ENTITIES = src/entity/.ts TYPEORM_ENTITIES_DIR = src/entity
+
+COMO RODAR O PROJETO?
+
+Na past frontend está o font da aplicação, para conectar o front com o back, em um terminal , na raiz do projeto rode o comando yarn dev:server, depois, abra outro terminal, navegue até o frontend e use yarn start ou npm start (caso as migrations nao rodem com o yarn dev:server, utilize o comando yarn typeorm migration:run)
 
 Qualquer feedback é bem vindo \O/ !

@@ -23,23 +23,27 @@
   
   border-radius: 2rem;
   margin-bottom: 1%;
-  width: 35%;
+  width: 20rem;
   text-align: center;
+  font-style: oblique;
   
 }
 
 .button {
   align-self: center;
-  width: 15%;
+  width: 15rem;
   height: 2rem;
   border-radius: 2rem;
   margin-bottom: 1%;
-  
+  font-size: 1em;
+  font-style: oblique;
 }
 
 .link {
   color: #e69b00;
   align-self: center;
+  font-style: oblique;
+  font-size: 1.5em;
 }
 .text {
   color: #e6cc00;

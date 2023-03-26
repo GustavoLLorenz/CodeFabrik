@@ -8,6 +8,7 @@
 .headerTitle{
   color: #e69b00;
   margin-left: 5%;
+  font-size: 2rem;
 }
 
 .logoutButton{
@@ -17,8 +18,10 @@
   border-radius: 2rem;
   border-style: groove;
   height: 3rem;
-  width: 10%;
+  width: 6rem;
   color:#e6cc00;
+  font-style: oblique;
+  font-size: 1.2rem;
 }
 
 .bodyHome{
@@ -55,13 +58,16 @@
 .linkHome{
 
   color:aliceblue;
+  font-style: oblique;
 }
 
 .linkHome2{
 
   color:aliceblue;
+  font-style: oblique;
 }
 .linkHome1{
   padding-left: 2%;
   color:aliceblue;
+  font-style: oblique;
 }
