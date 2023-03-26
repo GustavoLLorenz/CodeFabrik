@@ -53,7 +53,7 @@ export default class WalletRepository {
 
     if (transacao.tipo === 'entrada') {
       wallet.saldo = (Number(wallet.saldo) + Number(transacao.valor_transacao)).toString()
-     // Number(wallet.saldo) += Number(transacao.valor_transacao)
+   
     } else if (transacao.tipo === 'saida' && Number(wallet.saldo) >= Number(transacao.valor_transacao)) {
       wallet.saldo = (Number(wallet.saldo) - Number(transacao.valor_transacao)).toString()
     } else {

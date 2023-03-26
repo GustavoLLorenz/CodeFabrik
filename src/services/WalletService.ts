@@ -18,6 +18,7 @@ export default class WalletService {
 
   public async createTransaction(id:string, tipo: string, valor_transacao: string): Promise < Error | Transacao> {
     const transaction = await this.repository.createTransaction(id, tipo, valor_transacao)
+    
     return transaction
   };
 
