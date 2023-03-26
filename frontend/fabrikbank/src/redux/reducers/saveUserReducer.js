@@ -4,7 +4,8 @@ const INITIAL_STATE = {
 };
 
 const types = {
-  SAVE_USER: "SAVE_USER"
+  SAVE_USER: "SAVE_USER",
+  LOGOUT: "LOGOUT"
 }
 
 export const saveUserReducer = (state = INITIAL_STATE, action) => {
@@ -16,7 +17,8 @@ export const saveUserReducer = (state = INITIAL_STATE, action) => {
         user: action.payload,
         logado: true
        }
-       
+    case types.LOGOUT:
+      return state = INITIAL_STATE
 
       default:
         return state;
