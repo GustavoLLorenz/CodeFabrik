@@ -4,6 +4,7 @@ import { actionCreatorSaveUser, actionLogout } from "../redux/actions";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import '../css/Home.css'
 
 
 function Home(props) {
@@ -46,18 +47,25 @@ const updateUserWallet = async () => {
     
     {Object.keys(user).length !== 0?
     <>
-    <header>Bem vindo! {user.user_name}</header>
-      <button onClick={logout}>Sair</button>
-      <body>
-        {user.wallet !== undefined ? <div>R$ {user.wallet.saldo} </div> : <div>carregando...</div>}
-        <Link to="/adicionarsaldo">Adicionar saldo</Link>
-        <Link to="/transfer">Transferencia</Link>
-        <Link to="/extrato">Ver extrato da conta</Link>
+    <header className="headerHome">
+      <h2 className="headerTitle">Bem vindo! {user.user_name}</h2>
+      <button className="logoutButton"onClick={logout}>Sair</button>
+
+    </header>
+      
+      <body className="bodyHome">
+       
+        {user.wallet !== undefined ? <h1 className="divSaldo">Saldo da carteira R$ {user.wallet.saldo}</h1>  : <div>carregando...</div>}
+      <div className="linkDiv">
+        <Link className="linkHome" to="/adicionarsaldo">Adicionar saldo</Link>
+        <Link className="linkHome1" to="/transfer">Transferencia</Link>
+        <Link className="linkHome1" to="/extrato">Ver extrato da conta</Link>
+      </div>
       </body>
       </> : 
-      <div>
-        Você não está logado!
-        <Link to="/">Login</Link>
+      <div className="divNaoLogado">
+        <h2>Você não está logado!</h2>
+        <Link className="linkHome2" to="/">Login</Link>
        
       
       </div>}

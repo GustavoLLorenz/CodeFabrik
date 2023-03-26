@@ -3,6 +3,7 @@ import useForm from "../hooks/useForm";
 import axios from "axios";
 import {connect} from 'react-redux'
 import { actionCreatorSaveUser } from "../redux/actions";
+import { Link } from "react-router-dom";
 
 //actionCreatorSaveUser
 
@@ -43,9 +44,11 @@ props.history.push("/home")
 
 
 return (
-  <div>
-    <input name='valor_transacao' onChange={(event) => form.handleChange(event)}/>
-    <button onClick={addMoney}>Confirmar!</button>
+  <div className="login">
+    <h2 className="text">Digite a quantia que você quer adicionar</h2>
+    <input className="input1" name='valor_transacao' onChange={(event) => form.handleChange(event)}/>
+    <button className="transferbutton" onClick={addMoney}>Confirmar!</button>
+    <Link to="/home"className="link">Voltar</Link>
   </div>
 )
 }

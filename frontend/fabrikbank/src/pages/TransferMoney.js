@@ -6,6 +6,7 @@ import { useState } from "react";
 import { actionCreatorSaveUser, actionLogout } from "../redux/actions";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import '../css/Transfer.css'
 
 
 function TransferMoney( props) {
@@ -80,32 +81,32 @@ function TransferMoney( props) {
   }
 
   return (
-    <div>
-      <div>
-        Saldo em conta {user.wallet.saldo}
-      </div>
-      <label> Para quem voce quer transferir?
-      <input name='pplToTransfer' onChange={(event) => form.handleChange(event)} placeholder='Encontre por cpf'/>
-      </label>
-      <button onClick={handleFindPpl}>Procurar Pessoa</button>
+    <div className="maindiv">
+      <h2 className="tranfertext">
+        Saldo em conta R$ {user.wallet.saldo}
+      </h2>
+      <label className="tranfertext" > Para quem voce quer transferir?</label>
+      <input name='pplToTransfer' className="input1" onChange={(event) => form.handleChange(event)} placeholder='Encontre por cpf'/>
+      
+      <button className="transferbutton" onClick={handleFindPpl}>Procurar Pessoa</button>
       {pplFound.length !== 0 && success === false ?(
         
-        <div>
-          <h3>{pplFound.user_name}</h3>
-        <label>Valor da Transferencia: 
-        <input name='valor' placeholder="0,00" type='number' onChange={(event) => form.handleChange(event)}/>
-      </label>
-      <button onClick={handleTransfer} disabled={Number(user.wallet.saldo) < Number(form.form.valor) ? true: false}>
+        <div className="maindiv">
+          <h3 className="tranfertext">{pplFound.user_name}</h3>
+        <label className="tranfertext">Valor da Transferencia:  </label>
+        <input className="input1" name='valor' placeholder="0,00" type='number' onChange={(event) => form.handleChange(event)}/>
+     
+      <button className="transferbutton" onClick={handleTransfer} disabled={Number(user.wallet.saldo) < Number(form.form.valor) ? true: false}>
       {Number(user.wallet.saldo) < Number(form.form.valor) ? <>Saldo insuficiente</>: <>Confirmar transferencia</>}
       </button>
         </div>
-      ): <div>
-        <button onClick={() => resetSuccess()}>Realizar outra Transferencia</button>
+      ): <div className="maindiv">
+        <button className="newtransferbutton" onClick={() => resetSuccess()}>Realizar outra Transferencia</button>
         
         </div>}
-        <footer>
-        <Link to="/home">Voltar para Home</Link>
-        </footer>
+   
+        <Link className="tranferlink"to="/home">Voltar para Home</Link>
+  
 
     </div>
   )

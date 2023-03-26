@@ -1,0 +1,67 @@
+.headerHome{
+ width: 90%;
+ display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.headerTitle{
+  color: #e69b00;
+  margin-left: 5%;
+}
+
+.logoutButton{
+  align-self: center;
+  background-color: 	#ff5252;
+  border-color: transparent;
+  border-radius: 2rem;
+  border-style: groove;
+  height: 3rem;
+  width: 10%;
+  color:#e6cc00;
+}
+
+.bodyHome{
+
+  padding-left: 5%;
+  width: 100%;
+ 
+ 
+
+}
+.divSaldo{
+  align-self: center;
+  flex-wrap: wrap;
+  color: #e69b00;;
+ 
+}
+.linkDiv{
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap
+}
+
+.divNaoLogado{
+  display: flex;
+  margin-left: 2%;
+  align-self: center;
+  color: #e69b00;
+  flex-direction: column;
+
+  
+
+}
+.linkHome{
+
+  color:aliceblue;
+}
+
+.linkHome2{
+
+  color:aliceblue;
+}
+.linkHome1{
+  padding-left: 2%;
+  color:aliceblue;
+}

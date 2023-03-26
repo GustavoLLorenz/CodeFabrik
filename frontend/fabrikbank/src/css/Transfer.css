@@ -1,0 +1,94 @@
+
+.maindiv {
+  min-width: 100px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding-top: 10%;
+  width: 90%;
+ 
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  background-color: linear-gradient(to bottom,  green, white);
+  
+ 
+}
+.tranferlink {
+  color: #e69b00;
+  align-self: center;
+}
+.tranfertext {
+  color: #e6cc00;
+  align-self: center;
+  padding-bottom: 1%;
+}
+
+.input1 {
+  align-self: center;
+  height: 2rem;
+  border-radius: 2rem;
+  margin-bottom: 1%;
+  width: 20rem;
+  text-align: center;
+  
+}
+
+
+.transferbutton {
+  align-self: center;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 2rem;
+  margin-bottom: 1%;
+  
+}
+
+.newtransferbutton {
+  align-self: center;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 2rem;
+  margin-bottom: 1%;
+  
+}
+.transferinput {
+  align-self: center;
+  height: 2rem;
+  
+  border-radius: 2rem;
+  margin-bottom: 1%;
+  width: 25%;
+  text-align: center;
+  
+}
+
+.listContainer {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  
+}
+.listhead{
+ 
+  align-self: center;
+ 
+ 
+}
+.headCell{
+  color: #e69b00;
+  
+  margin-left: 5%;
+  border-bottom: none;
+  font-size: 1.7rem;
+
+}
+.listrow{
+  border-bottom: none;
+  align-self: center;
+
+}
+.bodycell{
+  border-bottom: none;
+  font-size: 1.4rem;
+}

@@ -37,26 +37,26 @@ function Extrato(props){
   ]
 
   return (
-    <div>
-      <Link to="/home">Voltar</Link>
-      <TableContainer>
-      <TableHead>
+    <div className="maindiv">
+      <Link className="link" to="/home">Voltar</Link>
+      <TableContainer className="listContainer">
+      <TableHead className="listhead">
       {TABLE_HEADER.map((item) => {
         return (
-            <TableCell>{item}</TableCell>
+            <TableCell className="headCell"  >{item}</TableCell>
         )
           
       })}
        </TableHead>
       {extrato.length > 0?  extrato.map((item, index) => {
        return (
-        <TableRow key={index}>
-          <TableCell>{item.tipo}</TableCell>
-          <TableCell> {item.tipo === 'saida'? `- R$ ${item.valor_transacao}`: `R$ ${item.valor_transacao}`}</TableCell>
-          <TableCell>{item.created_at.slice(0,10)}{console.log(item)}</TableCell>
+        <TableRow key={index} className="listrow">
+          <TableCell className="bodycell" style={item.tipo === 'entrada' ? {color: "#16FF00"} : {color: "red"}}>{item.tipo}</TableCell>
+          <TableCell className="bodycell"> {item.tipo === 'saida'? `- R$ ${item.valor_transacao}`: `R$ ${item.valor_transacao}`}</TableCell>
+          <TableCell className="bodycell">{item.created_at.slice(0,10)}</TableCell>
         </TableRow>
        )
-      }): <p>nenhuma transacao encontrada</p>}
+      }): <p className="tranfertext">nenhuma transacao encontrada =/</p>}
       </TableContainer>
     </div>
   )

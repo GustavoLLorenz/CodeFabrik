@@ -1,3 +1,4 @@
+import '../css/Login.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import useForm from '../hooks/useForm'
@@ -13,7 +14,7 @@ function Login(props) {
  
 
 useEffect(() => {
-  console.log('chamei')
+
   if(logado) {
     return props.history.push('/home')
   } else {
@@ -21,7 +22,6 @@ useEffect(() => {
   }
   
 }, [dispatch])
-console.log(form.form)
 
 
 
@@ -40,16 +40,18 @@ console.log(form.form)
     }
    }
   return (
-  <div>
-    <input placeholder='digite seu cpf' onChange={(event) => form.handleChange(event)} name="cpf_cnpj"/>
-    <input placeholder='digite sua senha' onChange={(event) => form.handleChange(event)} name="password"/>
-    <button 
+  <div className='login'>
+    <h1 className='welcome'>Faça seu login !</h1>
+    <input className='input' placeholder='000.000.000-00' onChange={(event) => form.handleChange(event)} name="cpf_cnpj"/>
+    <input className='input' placeholder='******' onChange={(event) => form.handleChange(event)} name="password"/>
+    <button className='button'
     onClick={loginUser}
     disabled={
       form.form.cpf_cnpj  && form.form.password ? false : true
     }
-    >Entrar</button>
-    <Link to="/createaccount">criar senha</Link>
+    >Login</button>
+    <h4 className='text'>Não possui uma conta no Fabrikbank?</h4>
+    <Link className='link' to="/createaccount">criar conta</Link>
 
   </div>
   )
