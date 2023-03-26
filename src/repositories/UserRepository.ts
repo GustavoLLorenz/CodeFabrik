@@ -54,6 +54,17 @@ public async create(newUser: IUser): Promise<User | Error> {
 
   }
 
+  public async findById(id: string):Promise <User | undefined> {
+    console.log('aaa',id)
+    const users = await this.ormRepository.findOne({where: {
+      id,
+      deleted_at: null
+    }});
+
+    return users;
+
+  }
+
   public async deleteByCpf(cpf: string):Promise <User | Error> {
     const users = await this.ormRepository.findOne({where: {
       cpf_cnpj:cpf

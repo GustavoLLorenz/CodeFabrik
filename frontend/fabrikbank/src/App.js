@@ -6,6 +6,7 @@ import CreateAccount from './pages/CreateAccount';
 import Home from './pages/Home';
 import {connect} from 'react-redux'
 import AddMoney from './pages/AddMoney';
+import TransferMoney from './pages/TransferMoney';
 
 function App(props) {
  const {logado} = props
@@ -16,6 +17,7 @@ function App(props) {
        <Route exact path="/createaccount" component={CreateAccount}/>
        <Route exact path="/home" component={Home}/>
        <Route exact path="/adicionarsaldo" component={AddMoney}/>
+       <Route exact path="/transfer" component={TransferMoney}/>
 
        <Route exact path="/" component={Login}/>
 

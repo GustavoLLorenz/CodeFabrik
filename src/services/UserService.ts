@@ -58,15 +58,46 @@ export class UserService {
     return users;
   }
 
-  public async findByCpf(cpf: string): Promise <User | Error> {
+  public async findByCpf(cpf: string): Promise <IUserWithWallet | Error> {
    
     const user =  await this.repository.findByCpf(cpf)
     if (!user) {
       return new Error( 'usuario não encontrado')
     }
+
+    const wallet = await this.walletRepo.findWalletById(user.id)
+    
+    const objToReturn = {
+     ...user,
+     wallet: {...wallet}
+    }
+    console.log('objToReturn: ==>',objToReturn)
+ 
+    return objToReturn as IUserWithWallet
+
+  }
+
+
+  public async findById(id: string): Promise <IUserWithWallet | Error> {
+    console.log(id)
+   
+    const user =  await this.repository.findById(id)
+    if (!user) {
+      return new Error( 'usuario não encontrado')
+    }
+
+    const wallet = await this.walletRepo.findWalletById(user.id)
+    
+    const objToReturn = {
+     ...user,
+     wallet: {...wallet}
+    }
+    console.log('objToReturn: ==>',objToReturn)
+ 
+    return objToReturn as IUserWithWallet
   
 
-    return user;
+
   }
 
   public async deleteByCpf(cpf: string): Promise <User | Error> {

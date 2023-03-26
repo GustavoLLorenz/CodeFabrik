@@ -21,19 +21,20 @@ useEffect(() => {
   }
   
 }, [dispatch])
+console.log(form.form)
+
 
 
   const loginUser = async () => {
-      props.history.push("/home")
+      // props.history.push("/home")
     try {
       axios.post(`http://localhost:3000/user/login`, {
         cpf_cnpj: form.form.cpf_cnpj,
         password: form.form.password
       }).then(function (response){
         dispatch(actionCreatorSaveUser(response.data))
-   
-    
       })
+      props.history.push("/home")
     } catch (error) {
       
     }

@@ -32,15 +32,15 @@ export class UserController {
   }
 
   async findByCpf(req: Request, res: Response) {
-    const {cpf_cnpj , password} = req.body
+    const {cpf } = req.params
 
-    if (!cpf_cnpj) {
+    if (!cpf) {
       return res.status(401).json({message: "CPF/CNPJ não foi informado."})
     }
 
     const service = new UserService()
 
-    const user = await service.findByCpf(cpf_cnpj);
+    const user = await service.findByCpf(cpf);
 
     if(user instanceof Error) {
       return res.status(400).json(user.message)
@@ -77,6 +77,26 @@ export class UserController {
     }
 
     return res.status(200).json(user)
+  }
+
+
+  async findById(req: Request, res: Response) {
+    const {id } = req.params
+    console.log(id)
+
+    if (!id) {
+      return res.status(401).json({message: "Id não foi informado."})
+    }
+
+    const service = new UserService()
+
+    const user = await service.findById(id);
+
+    if(user instanceof Error) {
+      return res.status(400).json(user.message)
+    }
+
+    return res.status(200).json(user);
   }
   
 }

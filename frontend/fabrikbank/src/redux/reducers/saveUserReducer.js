@@ -12,8 +12,9 @@ export const saveUserReducer = (state = INITIAL_STATE, action) => {
   switch(action.type) {
 
     case types.SAVE_USER:
+      console.log('entrei aqui de novo')
        return {
-        ...state,
+      
         user: action.payload,
         logado: true
        }
