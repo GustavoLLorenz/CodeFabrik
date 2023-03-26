@@ -22,6 +22,7 @@ function Home(props) {
       <button onClick={logout}>Sair</button>
       <body>
         {user.wallet !== undefined ? <div>R$ {user.wallet.saldo} </div> : <div>carregando...</div>}
+        <Link to="/adicionarsaldo">Adicionar saldo</Link>
       </body>
       </> : 
       <div>
