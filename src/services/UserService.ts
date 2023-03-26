@@ -2,13 +2,17 @@ import { User } from "entity/User";
 import {hash, compare} from 'bcrypt'
 import IUser from "interfaces/IUser";
 import { UserRepository } from "repositories/UserRepository";
+import WalletRepository from "repositories/WalletRepository";
+import { IUserWithWallet } from "interfaces/IUserWithWallet";
 
 
 export class UserService {
   private repository: UserRepository;
+  private walletRepo: WalletRepository;
 
   constructor() {
     this.repository = new UserRepository()
+    this.walletRepo = new WalletRepository()
   }
 
   public async create(newUser: IUser): Promise<User | Error> {
@@ -24,7 +28,7 @@ export class UserService {
 
   }
 
-  public async userLogin(cpf_cnpj: string, password: string): Promise <User | Error> {
+  public async userLogin(cpf_cnpj: string, password: string): Promise <IUserWithWallet | Error | undefined> {
     const user = await this.repository.findByCpf(cpf_cnpj)
     
     if (!user) {
@@ -34,10 +38,15 @@ export class UserService {
       const checkPassword = await compare(password, user.password)
       if(!checkPassword) return new Error('Senha incorreta')
     }
+    const wallet = await this.walletRepo.findWalletById(user.id)
     
-   
+   const objToReturn = {
+    ...user,
+    wallet: {...wallet}
+   }
+   console.log('objToReturn: ==>',objToReturn)
 
-    return user
+    return objToReturn as IUserWithWallet
 
   }
 

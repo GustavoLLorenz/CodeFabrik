@@ -82,4 +82,13 @@ export default class WalletRepository {
     return wallet;
   }
 
+  public async findWalletById(id: string): Promise<Carteira | undefined > {
+    const wallet = await this.ormRepository.findOne({
+      where: {
+        user_id: id
+      }
+    })
+    return wallet
+  }
+
 }

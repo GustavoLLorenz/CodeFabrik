@@ -41,7 +41,7 @@ public async create(newUser: IUser): Promise<User | Error> {
     return users;
 
   }
-  public async findByCpf(cpf: string):Promise <User | Error> {
+  public async findByCpf(cpf: string):Promise <User | undefined> {
     const users = await this.ormRepository.findOne({where: {
       cpf_cnpj:cpf,
       deleted_at: null

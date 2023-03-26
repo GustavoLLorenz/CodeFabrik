@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 
 export default function CreateAccount() {
   const form = useForm()
-  console.log('form no componente create acccount', form)
-
 
    const createUser = async () => {
     try {
@@ -17,10 +15,6 @@ export default function CreateAccount() {
       }).then(function (response){
         console.log('ee',response)
       })
-      // const response = await  axios.get(`http://localhost:3000/user`)
-      // const data = await response.json()
-      // console.log(data)
-      // return data;
       
     } catch (error) {
       console.log('deu erro', error)
