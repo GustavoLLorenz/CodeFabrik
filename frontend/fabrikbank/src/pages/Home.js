@@ -52,6 +52,7 @@ const updateUserWallet = async () => {
         {user.wallet !== undefined ? <div>R$ {user.wallet.saldo} </div> : <div>carregando...</div>}
         <Link to="/adicionarsaldo">Adicionar saldo</Link>
         <Link to="/transfer">Transferencia</Link>
+        <Link to="/extrato">Ver extrato da conta</Link>
       </body>
       </> : 
       <div>
