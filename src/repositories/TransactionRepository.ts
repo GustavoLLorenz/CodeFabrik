@@ -16,4 +16,13 @@ export default class TransactionRepository {
     
     return transaction;
   }
+
+  public async findAllByCarteiraId(carteiraId: string): Promise<Transacao[]> {
+    const transaction = await this.ormRepository.find({
+      where: {
+        carteira_id: carteiraId
+      }
+    })
+    return transaction;
+  }
 }
