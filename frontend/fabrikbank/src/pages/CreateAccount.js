@@ -3,6 +3,7 @@ import useForm from "../hooks/useForm";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
+import formataCPF from "../utils/cpfFormat";
 
 
 export default function CreateAccount(props) {
@@ -12,7 +13,7 @@ export default function CreateAccount(props) {
     try {
       axios.post(`http://localhost:3000/user`, {
         user_name: form.form.nome,
-        cpf_cnpj: form.form.cpfcnpj,
+        cpf_cnpj: formataCPF(form.form.cpfcnpj),
         password: form.form.senha
       }).then(function (response){
         console.log('ee',response)
@@ -22,6 +23,7 @@ export default function CreateAccount(props) {
       console.log('deu erro', error)
       
     }
+
     props.history.push("/")
    }
    
@@ -29,7 +31,7 @@ export default function CreateAccount(props) {
   return (
     <div className='login'>
     <h2 className="h2CreateAccount">Para abrir uma conta no Fabrikbank é muito simples, basta preencher o formuloário abaixo</h2>
-    <Input className={'input'} placeholder={'Digite seu cpf'} handleChange={form.handleChange} name={'cpfcnpj'}/>
+    <Input className={'input'} type={'number'} placeholder={'Digite seu cpf'} handleChange={form.handleChange} name={'cpfcnpj'}/>
     <Input className={'input'} placeholder={'Digite seu nome completo'} handleChange={form.handleChange} name={'nome'}/>
     <Input className={'input'} placeholder={'Digite sua senha'} handleChange={form.handleChange} name={'senha'}/>
     <Input className={'input'} placeholder={'Confirme sua senha'} handleChange={form.handleChange} name={'confirmaSenha'}/>

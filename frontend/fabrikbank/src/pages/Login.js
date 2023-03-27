@@ -8,6 +8,7 @@ import { actionCreatorSaveUser } from '../redux/actions'
 import Input from '../components/Input'
 import { useEffect } from 'react'
 import Button from '../components/Button'
+import formataCPF from '../utils/cpfFormat'
 
 function Login(props) {
   const form = useForm()
@@ -30,7 +31,7 @@ useEffect(() => {
       // props.history.push("/home")
     try {
       axios.post(`http://localhost:3000/user/login`, {
-        cpf_cnpj: form.form.cpf_cnpj,
+        cpf_cnpj: formataCPF(form.form.cpf_cnpj),
         password: form.form.password
       }).then(function (response){
         dispatch(actionCreatorSaveUser(response.data))
@@ -43,20 +44,11 @@ useEffect(() => {
   return (
   <div className='login'>
     <h1 className='welcome'>Faça seu login !</h1>
-    {/* <input className='input' placeholder='000.000.000-00' onChange={(event) => form.handleChange(event)} name="cpf_cnpj"/> */}
-    <Input className={'input'} placeholder={'000.000.000-00'} handleChange={form.handleChange} name={'cpf_cnpj'} />
-    {/* <input className='input' placeholder='******' onChange={(event) => form.handleChange(event)} name="password"/> */}
+    <Input className={'input'} type={'number'} placeholder={'000.000.000-00'} handleChange={form.handleChange} name={'cpf_cnpj'} />
     <Input className={'input'} placeholder={'******'} handleChange={form.handleChange} name={'password'}/>
-    {/* <button className='button'
-    onClick={loginUser}
-    disabled={
-      form.form.cpf_cnpj  && form.form.password ? false : true
-    }
-    >Login</button> */}
     <Button className={'button'} onClick={loginUser} formCpf={form.form.cpf_cnpj} formPassword={form.form.password} text={'Login'}/>
     <h4 className='text'>Não possui uma conta no Fabrikbank?</h4>
     <Link className='link' to="/createaccount">criar conta</Link>
-
   </div>
   )
 }

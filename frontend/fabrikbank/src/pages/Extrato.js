@@ -32,9 +32,9 @@ function Extrato(props){
     findAll()
   }, [])
   const TABLE_HEADER = [
-     'tipo',
-     'valor',
-     'data'
+     'Tipo',
+     'Valor',
+     'Data'
   ]
 
   return (
