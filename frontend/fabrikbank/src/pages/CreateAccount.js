@@ -1,32 +1,13 @@
 import React from "react";
 import useForm from "../hooks/useForm";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
-import formataCPF from "../utils/cpfFormat";
+import { createUser } from "../utils/fetchs";
 
 
 export default function CreateAccount(props) {
   const form = useForm()
 
-   const createUser = async () => {
-    try {
-      axios.post(`http://localhost:3000/user`, {
-        user_name: form.form.nome,
-        cpf_cnpj: formataCPF(form.form.cpfcnpj),
-        password: form.form.senha
-      }).then(function (response){
-        console.log('ee',response)
-      })
-      
-    } catch (error) {
-      console.log('deu erro', error)
-      
-    }
-
-    props.history.push("/")
-   }
-   
 
   return (
     <div className='login'>
@@ -37,7 +18,7 @@ export default function CreateAccount(props) {
     <Input className={'input'} placeholder={'Confirme sua senha'} handleChange={form.handleChange} name={'confirmaSenha'}/>
 
     <button className='button'
-    onClick={createUser} disabled={
+    onClick={() => createUser(props, form.form.nome, form.form.cpfcnpj, form.form.senha)} disabled={
       form.form.cpfcnpj && form.form.nome && form.form.senha  && form.form.senha === form.form.confirmaSenha ? false : true
     }>Criar conta</button>
     <footer className="footer">

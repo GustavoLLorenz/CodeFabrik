@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
+
 import { useState } from "react";
 import {
   TableHead,
@@ -12,25 +12,16 @@ import {
 } from '@mui/material'
 import { Link } from "react-router-dom";
 import '../css/Transfer.css'
+import { findAll } from "../utils/fetchs";
 
 function Extrato(props){
   const {user} = props
   const [extrato,setExtrato] = useState([]);
 
   useEffect(() => {
-    const findAll = async () => {
-      try {
-        await axios.get(`http://localhost:3000/transactions/${user.wallet.id}`)
-        .then(function(result) {
-          setExtrato(result.data)
-        })
-        
-      } catch (error) {
-        console.log('deu erro', error)
-      }
-    }
-    findAll()
+    findAll(user.wallet.id, setExtrato)
   }, [])
+
   const TABLE_HEADER = [
      'Tipo',
      'Valor',

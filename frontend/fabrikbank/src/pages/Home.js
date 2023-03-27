@@ -1,12 +1,13 @@
 import React from "react";
 import {connect} from 'react-redux'
-import { actionCreatorSaveUser, actionLogout } from "../redux/actions";
+import {  actionLogout } from "../redux/actions";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import axios from "axios";
+
 import '../css/Home.css'
 import { mockOffer } from "../mocks/mockOffer";
 import CardService from "../components/CardService";
+import { updateUserWallet } from "../utils/fetchs";
 
 
 function Home(props) {
@@ -15,28 +16,10 @@ function Home(props) {
 
   useEffect(() => {
     if(Object.keys(user).length !== 0) {
-      updateUserWallet()
+      updateUserWallet(dispatch, user.id)
     }
   }, [])
 
-
-const updateUserWallet = async () => {
-  console.log('userCnpj', user.cpf_cnpj)
-  try {
-    await axios.get(`http://localhost:3000/user/findById/${user.id}`, {
-      
-    cpf_cnpj:"125.516.120-62"
-    }).then(function (response){
-      dispatch(actionCreatorSaveUser(response.data))
-      console.log('response', response.data)
-      
-    })
-  
-  } catch (error) {
-    
-  }
-
-}
 
   const logout = () => {
     dispatch(actionLogout())
