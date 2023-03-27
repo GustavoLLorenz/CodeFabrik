@@ -4,6 +4,8 @@ import axios from "axios";
 import {connect} from 'react-redux'
 import { actionCreatorSaveUser } from "../redux/actions";
 import { Link } from "react-router-dom";
+import Input from "../components/Input";
+import Button from "../components/Button";
 
 //actionCreatorSaveUser
 
@@ -46,8 +48,8 @@ props.history.push("/home")
 return (
   <div className="login">
     <h2 className="text">Digite a quantia que você quer adicionar</h2>
-    <input className="input1" name='valor_transacao' onChange={(event) => form.handleChange(event)}/>
-    <button className="transferbutton" onClick={addMoney}>Confirmar!</button>
+    <Input className={'input1'} placeholder={' 00,00'} handleChange={form.handleChange} name={'valor_transacao'}/>
+    <Button className={'transferbutton'}  formCpf={form.form.valor_transacao ? true : false} formPassword={form.form.valor_transacao ? true : false} onClick={addMoney} text={'Confirmar'}/>
     <Link to="/home"className="link">Voltar</Link>
   </div>
 )

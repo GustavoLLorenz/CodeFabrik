@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import '../css/Home.css'
+import { mockOffer } from "../mocks/mockOffer";
+import CardService from "../components/CardService";
 
 
 function Home(props) {
@@ -60,6 +62,14 @@ const updateUserWallet = async () => {
         <Link className="linkHome" to="/adicionarsaldo">Adicionar saldo</Link>
         <Link className="linkHome1" to="/transfer">Transferencia</Link>
         <Link className="linkHome1" to="/extrato">Ver extrato da conta</Link>
+      </div>
+      <div className="mainCardDiv">
+        {mockOffer.map((item) => {
+          return (
+            <CardService title={item.title} description={item.description}/>
+          )
+          
+        })}
       </div>
       </body>
       </> : 

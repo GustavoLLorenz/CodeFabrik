@@ -7,6 +7,8 @@ import { actionCreatorSaveUser, actionLogout } from "../redux/actions";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../css/Transfer.css'
+import Input from "../components/Input";
+import Button from "../components/Button";
 
 
 function TransferMoney( props) {
@@ -86,25 +88,21 @@ function TransferMoney( props) {
         Saldo em conta R$ {user.wallet.saldo}
       </h2>
       <label className="tranfertext" > Para quem voce quer transferir?</label>
-      <input name='pplToTransfer' className="input1" onChange={(event) => form.handleChange(event)} placeholder='Encontre por cpf'/>
-      
-      <button className="transferbutton" onClick={handleFindPpl}>Procurar Pessoa</button>
+      <Input className={'input1'} placeholder={'Encontre por cpf'} handleChange={form.handleChange} name={'pplToTransfer'}/>
+      <Button className={'transferbutton'} formCpf={true} formPassword={true} onClick={handleFindPpl} text={'Procurar Pessoa'}/>
       {pplFound.length !== 0 && success === false ?(
         
         <div className="maindiv">
           <h3 className="tranfertext">{pplFound.user_name}</h3>
         <label className="tranfertext">Valor da Transferencia:  </label>
-        <input className="input1" name='valor' placeholder="0,00" type='number' onChange={(event) => form.handleChange(event)}/>
-     
+        <Input className={'input1'} placeholder={'0,00'} type={'number'} handleChange={form.handleChange} name={'valor'}/>
       <button className="transferbutton" onClick={handleTransfer} disabled={Number(user.wallet.saldo) < Number(form.form.valor) ? true: false}>
       {Number(user.wallet.saldo) < Number(form.form.valor) ? <>Saldo insuficiente</>: <>Confirmar transferencia</>}
       </button>
         </div>
       ): <div className="maindiv">
-        <button className="newtransferbutton" onClick={() => resetSuccess()}>Realizar outra Transferencia</button>
-        
+        <Button className={'newtransferbutton'} formCpf={true} formPassword={true} onClick={resetSuccess} text={'Realizar outra Transferencia'}/>
         </div>}
-   
         <Link className="tranferlink"to="/home">Voltar para Home</Link>
   
 
